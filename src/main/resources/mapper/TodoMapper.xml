@@ -17,8 +17,8 @@
                         now(),
                         #{endDate},
                         'N',
-                        1,
-                        1
+                        #{mno},
+                        #{uno}
                        )
     </insert>
 </mapper>
