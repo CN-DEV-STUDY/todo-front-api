@@ -21,5 +21,9 @@ public class TodoVO {
 
     private String del_yn;
 
+    private int mno;
+
+    private int uno;
+
 
 }

@@ -2,6 +2,7 @@ package com.todo.cn.controller;
 
 import com.todo.cn.controller.dto.PostTodoReq;
 import com.todo.cn.service.TodoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/todo")
 public class TodoController {
 
+    @Autowired
     private TodoService service;
 
     @PostMapping(value = "/register" , consumes = "application/json" , produces = {MediaType.APPLICATION_JSON_VALUE})
