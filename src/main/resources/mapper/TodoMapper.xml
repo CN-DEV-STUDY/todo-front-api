@@ -21,4 +21,29 @@
                         #{uno}
                        )
     </insert>
+
+    <select id="getList" resultType="com.todo.cn.controller.dto.GetTodoRes">
+        select
+                title,
+                content,
+                regDate,
+                endDate,
+                mno
+
+        from todo
+        where uno=#{uno} and del_yn='N'
+
+    </select>
+
+    <update id="update" >
+        update todo
+        set title=#{title},
+            content=#{content},
+            updateDate=now()
+        where tno=#{tno}
+    </update>
+
+    <update id="delete">
+        update todo set del_yn='Y' where tno=#{tno}
+    </update>
 </mapper>
