@@ -14,6 +14,7 @@ public class GetTodoRes {
     private String content;
     private LocalDate regDate;
     private LocalDate endDate;
+    private int tno;
     private int uno;
     private int mno;
 

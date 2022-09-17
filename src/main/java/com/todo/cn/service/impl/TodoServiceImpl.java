@@ -2,6 +2,7 @@ package com.todo.cn.service.impl;
 
 import com.todo.cn.controller.dto.GetTodoRes;
 import com.todo.cn.controller.dto.PostTodoReq;
+import com.todo.cn.domain.TodoVO;
 import com.todo.cn.mapper.TodoMapper;
 import com.todo.cn.service.TodoService;
 import lombok.AllArgsConstructor;
@@ -32,26 +33,44 @@ public class TodoServiceImpl implements TodoService {
     }
 
 
-//    @Override
-//    public int remove(int tno) {
-//        return mapper.delete(tno);
-//    }
+    public void remove(int tno) {
+        mapper.delete(tno);
+    }
 
-    @Transactional
-    @Override
+
     public void insertBin(PostTodoReq ptr) {
-        mapper.delete(ptr.getTno());
         mapper.insertBin(ptr);
 
     }
 
     @Override
-    public GetTodoRes selectTodo(int tno) {
+    public TodoVO selectTodo(int tno) {
         return mapper.selectTodo(tno);
     }
 
     @Override
     public int todoCnt(int uno) {
         return mapper.todoCnt(uno);
+    }
+
+    @Transactional
+    @Override
+    public void removeAndInsertBin(TodoVO todoVO) {
+        // Todo테이블 del_yn 처리
+        remove(todoVO.getTno()); // del_yn = 'Y'로 바꿈
+
+
+        // bin테이블에 insert 처리
+        PostTodoReq ptr = PostTodoReq.builder()
+                .uno(todoVO.getUno())
+                .tno(todoVO.getTno())
+                .mno(todoVO.getMno())
+                .title(todoVO.getTitle())
+                .content(todoVO.getContent())
+                .build();
+
+        insertBin(ptr);
+
+
     }
 }

@@ -48,26 +48,29 @@
     </update>
 
     <insert id="insertBin">
-        insert into todo(
+        insert into bin(
             title,
             content,
             mno,
-            uno
+            uno,
+            tno
         )
         values (
                    #{title},
                    #{content},
                    #{mno},
-                   #{uno}
+                   #{uno},
+                   #{tno}
                )
     </insert>
 
-    <select id="selectTodo" resultType="com.todo.cn.controller.dto.GetTodoRes">
+    <select id="selectTodo" resultType="com.todo.cn.domain.TodoVO">
         select
             title,
             content,
             mno,
-            uno
+            uno,
+            tno
 
         from todo
         where tno=#{tno}

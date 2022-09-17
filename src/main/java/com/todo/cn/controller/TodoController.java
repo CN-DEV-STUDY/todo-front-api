@@ -2,6 +2,7 @@ package com.todo.cn.controller;
 
 import com.todo.cn.controller.dto.GetTodoRes;
 import com.todo.cn.controller.dto.PostTodoReq;
+import com.todo.cn.domain.TodoVO;
 import com.todo.cn.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -40,9 +41,12 @@ public class TodoController {
     }
 
     @PutMapping(value = "/delete/{tno}")
-    public ResponseEntity<PostTodoReq> delete(@RequestBody PostTodoReq ptr){
-        service.insertBin(ptr);
-        return new ResponseEntity<PostTodoReq>(HttpStatus.OK);
+    public ResponseEntity<TodoVO> delete(@PathVariable("tno") int tno){
+        TodoVO todoVO = service.selectTodo(tno);
+
+        service.removeAndInsertBin(todoVO);
+
+        return new ResponseEntity<TodoVO>(HttpStatus.OK);
     }
 
     @GetMapping("/selectCount/{uno}")
