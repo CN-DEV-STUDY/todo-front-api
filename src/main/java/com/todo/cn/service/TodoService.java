@@ -12,6 +12,13 @@ public interface TodoService {
 
     public int modify(PostTodoReq ptr);
 
-    public int remove(int tno);
+//    public int remove(int tno);
+
+    public void insertBin(PostTodoReq ptr);
+
+    public GetTodoRes selectTodo(int tno);
+
+    public int todoCnt(int uno);
+
 
 }

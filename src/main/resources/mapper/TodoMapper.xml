@@ -46,4 +46,34 @@
     <update id="delete">
         update todo set del_yn='Y' where tno=#{tno}
     </update>
+
+    <insert id="insertBin">
+        insert into todo(
+            title,
+            content,
+            mno,
+            uno
+        )
+        values (
+                   #{title},
+                   #{content},
+                   #{mno},
+                   #{uno}
+               )
+    </insert>
+
+    <select id="selectTodo" resultType="com.todo.cn.controller.dto.GetTodoRes">
+        select
+            title,
+            content,
+            mno,
+            uno
+
+        from todo
+        where tno=#{tno}
+    </select>
+
+    <select id="todoCnt" resultType="int">
+        select count(*) from todo where uno = #{uno}
+    </select>
 </mapper>

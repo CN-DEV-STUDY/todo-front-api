@@ -6,6 +6,7 @@ import com.todo.cn.mapper.TodoMapper;
 import com.todo.cn.service.TodoService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -30,8 +31,27 @@ public class TodoServiceImpl implements TodoService {
         return mapper.update(ptr);
     }
 
+
+//    @Override
+//    public int remove(int tno) {
+//        return mapper.delete(tno);
+//    }
+
+    @Transactional
     @Override
-    public int remove(int tno) {
-        return mapper.delete(tno);
+    public void insertBin(PostTodoReq ptr) {
+        mapper.delete(ptr.getTno());
+        mapper.insertBin(ptr);
+
+    }
+
+    @Override
+    public GetTodoRes selectTodo(int tno) {
+        return mapper.selectTodo(tno);
+    }
+
+    @Override
+    public int todoCnt(int uno) {
+        return mapper.todoCnt(uno);
     }
 }

@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -20,9 +22,9 @@ public class TodoController {
     private TodoService service;
 
     @PostMapping(value = "/register" , consumes = "application/json" , produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<PostTodoReq> create(@RequestBody PostTodoReq ptr){
+    public ResponseEntity<Integer> create(@RequestBody PostTodoReq ptr){
         int result = service.register(ptr);
-        return result == 1 ? new ResponseEntity<>(HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        return result == 1 ? new ResponseEntity<Integer>(result,HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @GetMapping(value = "/list/{uno}", produces = {MediaType.APPLICATION_JSON_VALUE})
@@ -38,9 +40,15 @@ public class TodoController {
     }
 
     @PutMapping(value = "/delete/{tno}")
-    public ResponseEntity<?> delete(@PathVariable("tno") int tno){
-        int result = service.remove(tno);
-        return result == 1 ? new ResponseEntity<>(HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    public ResponseEntity<PostTodoReq> delete(@RequestBody PostTodoReq ptr){
+        service.insertBin(ptr);
+        return new ResponseEntity<PostTodoReq>(HttpStatus.OK);
+    }
+
+    @GetMapping("/selectCount/{uno}")
+    public int todoCnt(@PathVariable("uno") int uno){
+        int result = service.todoCnt(uno);
+        return result;
     }
 
 }
