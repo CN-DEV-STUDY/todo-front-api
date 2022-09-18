@@ -77,6 +77,6 @@
     </select>
 
     <select id="todoCnt" resultType="int">
-        select count(*) from todo where uno = #{uno}
+        select count(*) from todo where uno = #{uno} and del_yn = 'N'
     </select>
 </mapper>
