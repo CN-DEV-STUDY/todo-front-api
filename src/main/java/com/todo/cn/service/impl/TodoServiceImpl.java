@@ -73,4 +73,24 @@ public class TodoServiceImpl implements TodoService {
 
 
     }
+
+    public void restore(int tno) {
+        mapper.restore(tno);
+    }
+
+
+    public void removeBin(int tno) {
+        mapper.removeBin(tno);
+    }
+
+    @Transactional
+    @Override
+    public void restoreTodo(int tno) {
+
+        // 휴지통에 있는 todo 먼저 삭제
+        removeBin(tno);
+
+        // del_yn = 'N' 으로 바꿈
+        restore(tno);
+    }
 }

@@ -26,6 +26,8 @@ public interface TodoMapper {
 
     public int todoCnt(int uno);
 
+    public int restore(int tno);
+    public int removeBin(int tno);
 
 
 

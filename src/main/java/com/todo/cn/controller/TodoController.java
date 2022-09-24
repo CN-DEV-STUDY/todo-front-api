@@ -55,4 +55,10 @@ public class TodoController {
         return result;
     }
 
+    @PutMapping(value = "/restore/{tno}")
+    public void restoreTodo(@PathVariable int tno){
+        service.restoreTodo(tno);
+
+    }
+
 }

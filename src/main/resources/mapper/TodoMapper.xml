@@ -79,4 +79,13 @@
     <select id="todoCnt" resultType="int">
         select count(*) from todo where uno = #{uno} and del_yn = 'N'
     </select>
+
+    <update id="restore">
+        update todo set del_yn='N' where tno=#{tno}
+    </update>
+
+    <delete id="removeBin">
+        delete from bin where tno = #{tno}
+    </delete>
+
 </mapper>

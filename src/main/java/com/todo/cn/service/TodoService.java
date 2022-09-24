@@ -22,5 +22,8 @@ public interface TodoService {
     public int todoCnt(int uno);
 
 
-    void removeAndInsertBin(TodoVO todoVO);
+    public void removeAndInsertBin(TodoVO todoVO);
+
+    public void restoreTodo(int tno);
+
 }
