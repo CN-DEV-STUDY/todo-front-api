@@ -28,7 +28,8 @@
                 content,
                 regDate,
                 endDate,
-                mno
+                mno,
+                tno
 
         from todo
         where uno=#{uno} and del_yn='N'

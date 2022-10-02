@@ -23,6 +23,7 @@ public class TodoController {
     @GetMapping("/list/{uno}")
     public String list(@PathVariable int uno , Model model){
         List<GetTodoRes> list = service.getList(uno);
+        model.addAttribute("uno", uno);
         model.addAttribute("list" , list);
 
         return "list";
