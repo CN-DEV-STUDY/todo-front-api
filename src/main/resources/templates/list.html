@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <title>Title</title>
 </head>
-<body>
+<body class="m-5">
 
     <h1>TodoList</h1>
     <form th:action="@{/todo/register}" method="post">
@@ -26,7 +26,7 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 
-    <div class="accordion" id="accordionExample">
+    <div class="accordion mt-3" id="accordionExample">
         <div class="accordion-item" th:each="list : ${list}">
             <div>
                 <h2 th:if="${listStat.size} == 0" th:text="'할일 목록이 없습니다. 할일을 등록해 주세요'"></h2>
