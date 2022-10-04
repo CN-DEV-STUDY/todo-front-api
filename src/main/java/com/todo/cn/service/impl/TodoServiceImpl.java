@@ -28,6 +28,11 @@ public class TodoServiceImpl implements TodoService {
     }
 
     @Override
+    public List<GetTodoRes> getBinList(int uno) {
+        return mapper.getBinList(uno);
+    }
+
+    @Override
     public int modify(PostTodoReq ptr) {
         return mapper.update(ptr);
     }

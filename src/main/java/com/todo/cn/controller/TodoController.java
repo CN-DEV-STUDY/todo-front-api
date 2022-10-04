@@ -20,6 +20,7 @@ public class TodoController {
 
     private final TodoService service;
 
+
     @GetMapping("/list/{uno}")
     public String list(@PathVariable int uno , Model model){
         List<GetTodoRes> list = service.getList(uno);
@@ -27,6 +28,15 @@ public class TodoController {
         model.addAttribute("list" , list);
 
         return "list";
+    }
+
+    @GetMapping("/bin/{uno}")
+    public String bin(@PathVariable int uno , Model model){
+        List<GetTodoRes> list = service.getList(uno);
+        model.addAttribute("uno", uno);
+        model.addAttribute("list" , list);
+
+        return "bin";
     }
 
     @PostMapping("/register")

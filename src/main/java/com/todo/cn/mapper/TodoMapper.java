@@ -16,6 +16,8 @@ public interface TodoMapper {
 
     public List<GetTodoRes> getList(int uno);
 
+    public List<GetTodoRes> getBinList(int uno);
+
     public int update(PostTodoReq ptr);
 
     public int delete(int tno);

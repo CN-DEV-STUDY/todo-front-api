@@ -36,6 +36,19 @@
 
     </select>
 
+    <select id="getBinList" resultType="com.todo.cn.controller.dto.GetTodoRes">
+        select
+            title,
+            content,
+            regDate,
+            endDate,
+            mno,
+            tno
+
+        from todo
+        where uno=#{uno} and del_yn='Y'
+    </select>
+
     <update id="update" >
         update todo
         set title=#{title},
