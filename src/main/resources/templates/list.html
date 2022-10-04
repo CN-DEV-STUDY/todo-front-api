@@ -38,10 +38,11 @@
                     Accordion Item #1
                 </button>
             </h2>
-            <div data-th-attr="id='_' + ${list.tno}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                <div class="accordion-body" th:text="${list.content}">
+            <div style="margin: 32px;" data-th-attr="id='_' + ${list.tno}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <span class="accordion-body" th:text="${list.content}">
                     <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                </div>
+                </span>
+                <span style="position: absolute; right: 10px;"><button>삭제</button></span>
             </div>
         </div>
     </div>
