@@ -11,6 +11,8 @@ public interface TodoService {
 
     public List<GetTodoRes> getList(int uno);
 
+    public List<GetTodoRes> getBinList(int uno);
+
     public int modify(PostTodoReq ptr);
 
 //    public int remove(int tno);
