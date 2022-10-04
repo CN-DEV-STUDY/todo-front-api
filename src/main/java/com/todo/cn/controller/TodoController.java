@@ -32,7 +32,7 @@ public class TodoController {
 
     @GetMapping("/bin/{uno}")
     public String bin(@PathVariable int uno , Model model){
-        List<GetTodoRes> list = service.getList(uno);
+        List<GetTodoRes> list = service.getBinList(uno);
         model.addAttribute("uno", uno);
         model.addAttribute("list" , list);
 
