@@ -28,6 +28,9 @@
 
     <div class="accordion" id="accordionExample">
         <div class="accordion-item" th:each="list : ${list}">
+            <div>
+                <h2 th:if="${listStat.size} == 0" th:text="'할일 목록이 없습니다. 할일을 등록해 주세요'"></h2>
+            </div>
             <h2 class="accordion-header">
                 <button class="accordion-button collapsed"
                         type="button" data-bs-toggle="collapse"
