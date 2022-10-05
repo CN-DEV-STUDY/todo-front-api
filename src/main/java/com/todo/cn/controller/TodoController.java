@@ -5,6 +5,8 @@ import com.todo.cn.controller.dto.PostTodoReq;
 import com.todo.cn.domain.TodoVO;
 import com.todo.cn.service.TodoService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -31,12 +33,10 @@ public class TodoController {
     }
 
     @GetMapping("/bin/{uno}")
-    public String bin(@PathVariable int uno , Model model){
-        List<GetTodoRes> list = service.getBinList(uno);
-        model.addAttribute("uno", uno);
-        model.addAttribute("list" , list);
-
-        return "bin";
+    @ResponseBody
+    public ResponseEntity<List<GetTodoRes>> bin(@PathVariable int uno , Model model){
+        List<GetTodoRes> binList = service.getBinList(uno);
+        return new ResponseEntity<>(binList ,HttpStatus.OK);
     }
 
     @PostMapping("/register")
@@ -64,11 +64,14 @@ public class TodoController {
 
     }
 
-//    @PostMapping("/restore/{tno}")
-//    public String restoreTodo(@PathVariable int tno){
-//        service.restoreTodo(tno);
-//        return
-//    }
+    // 휴지통에서 복구버튼 클릭시 할일 리스트 페이지로 복구
+    @PostMapping("/restore/{tno}")
+    public String restoreTodo(@PathVariable int tno , RedirectAttributes redirectAttributes){
+        service.restoreTodo(tno);
+        TodoVO todoVO = service.selectTodo(tno);
+        redirectAttributes.addAttribute("uno", todoVO.getUno());
+        return "redirect:/todo/bin/{uno}";
+    }
 
 /**
  * API

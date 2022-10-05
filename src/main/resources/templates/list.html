@@ -127,13 +127,15 @@
                                     content
                                 </th>
                                 <th>삭제</th>
+                                <th>복구</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>내일은 토요일</td>
                                 <td>내일 놀자</td>
-                                <td><button class="btn btn-danger">X</button></td>
+                                <td><button class="btn btn-outline-danger">X</button></td>
+                                <td><button class="btn btn-outline-info">O</button></td>
                             </tr>
 
                         </tbody>
@@ -150,7 +152,7 @@
 </body>
 
 <script>
-
+    fetch("/todo/bin/1").then((response)=>response.json()).then((data)=>console.log(data))
 </script>
 
 
