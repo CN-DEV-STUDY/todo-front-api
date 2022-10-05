@@ -160,8 +160,16 @@
                     trTag += `<tr>
                             <td>${bin.title}</td>
                             <td>${bin.content}</td>
-                            <td><button class="btn btn-outline-danger">X</button></td>
-                            <td><button class="btn btn-outline-info">O</button></td>
+                            <td>
+                                <form method="post">
+                                    <button class="btn btn-outline-danger">X</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form method="post" action="/todo/restore/${bin.tno}">
+                                    <button class="btn btn-outline-info" type="submit">O</button>
+                                </form>
+                            </td>
                            </tr>
                             `
                 });

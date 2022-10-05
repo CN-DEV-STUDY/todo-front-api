@@ -70,7 +70,7 @@ public class TodoController {
         service.restoreTodo(tno);
         TodoVO todoVO = service.selectTodo(tno);
         redirectAttributes.addAttribute("uno", todoVO.getUno());
-        return "redirect:/todo/bin/{uno}";
+        return "redirect:/todo/list/{uno}";
     }
 
 /**
