@@ -44,9 +44,9 @@
             endDate,
             mno,
             tno
-
         from todo
         where uno=#{uno} and del_yn='Y'
+        order by delete_time desc
     </select>
 
     <update id="update" >
@@ -58,7 +58,7 @@
     </update>
 
     <update id="delete">
-        update todo set del_yn='Y' where tno=#{tno}
+        update todo set del_yn='Y', delete_time = now() where tno=#{tno}
     </update>
 
     <insert id="insertBin">
