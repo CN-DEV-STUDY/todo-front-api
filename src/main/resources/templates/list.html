@@ -130,13 +130,7 @@
                                 <th>복구</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>내일은 토요일</td>
-                                <td>내일 놀자</td>
-                                <td><button class="btn btn-outline-danger">X</button></td>
-                                <td><button class="btn btn-outline-info">O</button></td>
-                            </tr>
+                        <tbody id="binList">
 
                         </tbody>
                     </table>
@@ -151,8 +145,47 @@
 
 </body>
 
-<script>
-    fetch("/todo/bin/1").then((response)=>response.json()).then((data)=>console.log(data))
+<script th:inline="javascript">
+
+    window.onload = () => {
+        fetch("/todo/bin/1")
+            .then((response)=>response.json())
+            .then((data)=>{
+                let trTag = "";
+                const tBody = document.querySelector("#binList");
+                data.forEach((bin)=>{
+                    trTag += `<tr>
+                            <td>${bin.title}</td>
+                            <td>${bin.content}</td>
+                            <td><button class="btn btn-outline-danger">X</button></td>
+                            <td><button class="btn btn-outline-info">O</button></td>
+                           </tr>
+                            `
+                });
+                tBody.innerHTML=trTag;
+            });
+
+        document.querySelector("#submitBtn").onclick = (e) => {
+            e.preventDefault();
+
+            const title = document.querySelector("#title");
+            const content = document.querySelector("#content");
+
+            if(!title.value) {
+                alert("제목을 입력해주세요.");
+                title.focus();
+                return;
+            }
+            if(!content.value) {
+                alert("내용을 입력해주세요.");
+                content.focus();
+                return;
+            }
+            document.querySelector("#todoForm").submit();
+        }
+
+    };
+
 </script>
 
 
