@@ -23,7 +23,7 @@
     </span>
 
 <h1>TodoList</h1>
-    <form th:action="@{/todo/register}" method="post">
+    <form th:action="@{/todo/register}" method="post" id="todoForm">
         <input type="hidden" th:value="${uno}" name="uno">
         <input type="hidden" value="1" name="mno">
     <div class="mb-3">
@@ -31,10 +31,10 @@
             <input type="text" class="form-control" id="title" name="title">
         </div>
         <div class="mb-3">
-            <label for="" class="form-label">내용</label>
-            <textarea class="form-control" id="" cols="30" rows="10" name="content"></textarea>
+            <label for="content" class="form-label">내용</label>
+            <textarea class="form-control" cols="30" rows="10" id="content" name="content"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
         <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#bin">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                 <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
@@ -152,7 +152,32 @@
 </body>
 
 <script>
-    fetch("/todo/bin/1").then((response)=>response.json()).then((data)=>console.log(data))
+window.onload = () => {
+    fetch("/todo/bin/1")
+        .then((response)=>response.json())
+        .then((data)=>console.log(data))
+
+
+    document.querySelector("#submitBtn").onclick = (e) => {
+        e.preventDefault();
+
+        const title = document.querySelector("#title");
+        const content = document.querySelector("#content");
+
+        if(!title.value) {
+            alert("제목을 입력해주세요.");
+            title.focus();
+            return;
+        }
+        if(!content.value) {
+            alert("내용을 입력해주세요.");
+            content.focus();
+            return;
+        }
+        document.querySelector("#todoForm").submit();
+    }
+
+};
 </script>
 
 
