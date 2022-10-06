@@ -98,4 +98,10 @@ public class TodoServiceImpl implements TodoService {
         // del_yn = 'N' 으로 바꿈
         restore(tno);
     }
+
+    @Override
+    public int removeTodoPer(int tno){
+        return mapper.removeBin(tno);
+    }
+
 }

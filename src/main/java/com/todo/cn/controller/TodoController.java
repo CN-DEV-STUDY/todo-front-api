@@ -72,6 +72,15 @@ public class TodoController {
         redirectAttributes.addAttribute("uno", todoVO.getUno());
         return "redirect:/todo/list/{uno}";
     }
+    
+    // 휴지통에서 영구삭제
+    @PostMapping("/removeBinPer/{tno}")
+    public String removeBinPer(@PathVariable int tno , RedirectAttributes redirectAttributes){
+        service.removeTodoPer(tno);
+        TodoVO todoVO = service.selectTodo(tno);
+        redirectAttributes.addAttribute("uno", todoVO.getUno());
+        return "redirect:/todo/list/{uno}";
+    }
 
 /**
  * API

@@ -28,4 +28,6 @@ public interface TodoService {
 
     public void restoreTodo(int tno);
 
+    public int removeTodoPer(int tno);
+
 }
