@@ -1,10 +1,38 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<head th:replace="commonLayout :: common_header(~{::title}, ~{::style})">
+    <title>Login</title>
+    <style>
+        #headerBtn {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+
+        #loginBody {
+            margin: 32px;
+        }
+    </style>
 </head>
-<body>
-<h1>로그인 페이지 입니다.</h1>
+<body id="loginBody">
+<form class="px-4 py-3">
+    <div class="mb-3">
+        <label for="exampleDropdownFormEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+    </div>
+    <div class="mb-3">
+        <label for="exampleDropdownFormPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+    </div>
+    <div class="mb-3">
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="dropdownCheck">
+            <label class="form-check-label" for="dropdownCheck">
+                Remember me
+            </label>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary" th:onclick="|location.href='@{/signup}'|">Sign in</button>
+</form>
 </body>
 </html>
