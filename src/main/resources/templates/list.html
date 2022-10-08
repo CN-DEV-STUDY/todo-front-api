@@ -12,7 +12,9 @@
 </head>
 <body class="m-5">
     <span id="headerBtn">
-<!--        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">로그인</button>-->
+    <!--/*-->
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">로그인</button>
+    <!--*/-->
         <button class="btn btn-primary" th:onclick="|location.href='@{/login}'|">로그인</button>
         <button class="btn btn-primary" th:onclick="|location.href='@{/signup}'|">회원가입</button>
     </span>
@@ -38,11 +40,10 @@
         </button>
     </form>
 
+
+    <div th:if="${list.size()} == 0" th:text="'할일 목록이 없습니다. 할일을 추가해주세요! 😃'"></div>
     <div class="accordion mt-3" id="accordionExample">
         <div class="accordion-item" th:each="list : ${list}">
-            <div>
-                <h2 th:if="${listStat.size} == 0" th:text="'할일 목록이 없습니다. 할일을 등록해 주세요'"></h2>
-            </div>
             <h2 class="accordion-header">
                 <button class="accordion-button collapsed"
                         type="button" data-bs-toggle="collapse"
@@ -50,7 +51,7 @@
                         aria-expanded="false"
                         aria-controls="collapseOne"
                         th:text="${list.title}">
-                    Accordion Item #1
+
                 </button>
             </h2>
             <div style="margin: 32px;" data-th-attr="id='_' + ${list.tno}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -67,6 +68,7 @@
         </div>
     </div>
 
+<!--/*-->
     <!-- 로그인 모달 -->
     <div class="modal fade" tabindex="-1" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false">
         <div class="modal-dialog modal-dialog-centered">
@@ -102,6 +104,7 @@
             </div>
         </div>
     </div>
+<!--*/-->
 
     <!-- 휴지통 모달 -->
     <div class="modal" tabindex="-1" id="bin">
@@ -136,7 +139,6 @@
             </div>
         </div>
     </div>
-
 
 </body>
 

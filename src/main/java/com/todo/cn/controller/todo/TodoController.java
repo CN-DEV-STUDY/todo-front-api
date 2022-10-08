@@ -1,4 +1,4 @@
-package com.todo.cn.controller;
+package com.todo.cn.controller.todo;
 
 import com.todo.cn.controller.dto.GetTodoRes;
 import com.todo.cn.controller.dto.PostTodoReq;

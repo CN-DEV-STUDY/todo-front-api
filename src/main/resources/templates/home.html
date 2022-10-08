@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<head th:replace="commonLayout :: common_header(~{::title}, ~{::style})">
+    <title>Home</title>
+
+    <style>
+        #headerBtn {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+
+    </style>
+
 </head>
 <body>
   <h1>홈페이지 입니다</h1>
-  <button th:onclick="|location.href='@{/login}'|">로그인</button>
-  <button th:onclick="|location.href='@{/signup}'|">회원가입</button>
+  <span id="headerBtn">
+        <button class="btn btn-primary" th:onclick="|location.href='@{/login}'|">로그인</button>
+        <button class="btn btn-primary" th:onclick="|location.href='@{/signup}'|">회원가입</button>
+    </span>
 </body>
 </html>
