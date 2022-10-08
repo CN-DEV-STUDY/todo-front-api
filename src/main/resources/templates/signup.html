@@ -1,10 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<head th:replace="commonLayout :: common_header(~{::title}, ~{::style})">
+    <title>Login</title>
+    <style>
+        body {
+            margin: 32px;
+        }
+    </style>
 </head>
 <body>
-<h1>회원가입 페이지 입니다.</h1>
+<h1>회원가입</h1>
+<form>
+    <div class="row mb-3 g-3 align-items-center">
+        <div class="col-auto">
+            <label for="username" class="col-form-label">아이디</label>
+        </div>
+        <div class="col-auto">
+            <input type="password" id="username" class="form-control">
+        </div>
+        <div class="col-auto">
+            <span id="" class="form-text">
+              <button class="btn btn-outline-primary">중복확인</button>
+            </span>
+        </div>
+        <div class="col-auto">
+            <span id="" class="form-text">
+              Must be 8-20 characters long.
+            </span>
+        </div>
+    </div>
+    <div class="row mb-3 g-3 align-items-center">
+        <div class="col-auto">
+            <label for="password" class="col-form-label">비밀번호</label>
+        </div>
+        <div class="col-auto">
+            <input type="password" id="password" class="form-control">
+        </div>
+        <div class="col-auto">
+            <span id="" class="form-text">
+              Must be 8-20 characters long.
+            </span>
+        </div>
+    </div>
+    <div class="row mb-3 g-3 align-items-center">
+        <div class="col-auto">
+            <label for="confirmPassword" class="col-form-label">비밀번호 확인</label>
+        </div>
+        <div class="col-auto">
+            <input type="password" id="confirmPassword" class="form-control">
+        </div>
+        <div class="col-auto">
+            <span id="" class="form-text">
+              Must be 8-20 characters long.
+            </span>
+        </div>
+    </div>
+    <div class="row mb-3 g-3 align-items-center">
+        <div class="col-auto">
+            <label for="name" class="col-form-label">이름</label>
+        </div>
+        <div class="col-auto">
+            <input type="password" id="name" class="form-control">
+        </div>
+        <div class="col-auto">
+            <span id="" class="form-text">
+              Must be 8-20 characters long.
+            </span>
+        </div>
+    </div>
+    <div class="row mb-3 g-3 align-items-center">
+        <div class="col-auto">
+            <label for="name" class="col-form-label">이메일</label>
+        </div>
+        <div class="col-auto">
+            <input type="password" id="name" class="form-control">
+        </div>
+        <span class="col-auto">@</span>
+        <div class="col-auto">
+            <input type="password" id="name" class="form-control">
+        </div>
+        <div class="col-auto">
+            <select name="" id="" class="form-control">
+                <option value="">선택</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mb-3 g-3 align-items-center">
+        <div class="col-auto">
+            <label for="name" class="col-form-label">성별</label>
+        </div>
+        <div class="col-auto">
+            <label for="male">남</label>
+            <input type="radio" id="male" name="gender" class="form-check-input">
+        </div>
+        <div class="col-auto">
+            <label for="female">여</label>
+            <input type="radio" id="female" name="gender" class="form-check-input">
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 </body>
 </html>
