@@ -17,24 +17,23 @@ public class PostUserReq {
 
     private String name;
 
-    private String email;
+    private String[] email;
 
-    private String phone;
+    private String[] phone;
 
     private String gender;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate birthDate;
+    private String[] birthDate;
 
 
     @Builder
     public PostUserReq(String username ,
                        String password,
                        String name,
-                       String email,
-                       String phone,
+                       String[] email,
+                       String[] phone,
                        String gender,
-                       LocalDate birthDate) {
+                       String[] birthDate) {
         this.username = username;
         this.password = password;
         this.name=name;
