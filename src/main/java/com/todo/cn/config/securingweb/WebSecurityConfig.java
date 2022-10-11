@@ -22,7 +22,7 @@ public class WebSecurityConfig {
                         .antMatchers("/", "/home", "/admin/signup").permitAll()
                         .anyRequest().authenticated())
                 .formLogin((form) -> form
-                        .loginPage("/login").permitAll())
+                        .loginPage("/admin/login").permitAll())
                 .logout((logout) -> logout.permitAll());
         return http.build();
     }

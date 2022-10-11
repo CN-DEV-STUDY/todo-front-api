@@ -2,6 +2,7 @@ package com.todo.cn.service.impl;
 
 import com.todo.cn.controller.dto.PostTodoReq;
 import com.todo.cn.controller.dto.PostUserReq;
+import com.todo.cn.domain.UserVO;
 import com.todo.cn.mapper.AdminMapper;
 import com.todo.cn.service.AdminService;
 import lombok.AllArgsConstructor;
@@ -32,5 +33,10 @@ public class AdminServiceImpl implements AdminService {
     public void signup(PostUserReq pur) {
         insertUser(pur);
         insertAuthorities(pur);
+    }
+
+    @Override
+    public UserVO findUserById(String username) {
+        return mapper.findUserById(username);
     }
 }
