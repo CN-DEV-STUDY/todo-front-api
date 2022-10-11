@@ -8,8 +8,6 @@ import com.todo.cn.service.AdminService;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,13 +23,11 @@ public class AdminServiceImpl implements AdminService {
     private final AdminMapper mapper;
 
 
-    private final PasswordEncoder passwordEncoder;
-
 
     // 회원 회원가입
     public void insertUser(PostUserReq pur) {
 
-        String password = passwordEncoder.encode(pur.getPassword());
+
 
         String e1 = pur.getEmail()[0];
         String e2 = pur.getEmail()[1];
@@ -52,7 +48,7 @@ public class AdminServiceImpl implements AdminService {
 
         UserVO userVO = UserVO.builder()
                 .username(pur.getUsername())
-                .password(password)
+                .password(pur.getPassword())
                 .name(pur.getName())
                 .email(email)
                 .phone(phone)

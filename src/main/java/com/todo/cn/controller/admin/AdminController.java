@@ -5,7 +5,6 @@ import com.todo.cn.domain.UserVO;
 import com.todo.cn.service.AdminService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +18,6 @@ import org.springframework.web.servlet.view.RedirectView;
 public class AdminController {
 
     private AdminService service;
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public AdminController(AdminService service) {
         this.service = service;
@@ -38,24 +36,6 @@ public class AdminController {
         return "login";
     }
 
-    @PostMapping("/login")
-    public RedirectView loginUser(
-            String username,
-            String password,
-            @SessionAttribute(required = false) String next,
-            Model model) {
-        UserVO userVO = service.findUserById(username);
-
-        String location = "/";
-        if(userVO != null && bCryptPasswordEncoder.matches(password, userVO.getPassword())) {
-            model.addAttribute("loginUser", userVO);
-
-            location = next;
-        } else {
-            return new RedirectView("/login");
-        }
-        return new RedirectView(location);
-    }
 
     @GetMapping("/signup")
     public String signup(){
