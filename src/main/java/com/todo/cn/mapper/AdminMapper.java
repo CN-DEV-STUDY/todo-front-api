@@ -9,7 +9,7 @@ import java.util.List;
 @Mapper
 public interface AdminMapper {
 
-    public int signupUser(PostUserReq pur);
+    public int signupUser(UserVO userVO);
     public int insertAuthorities(PostUserReq pur);
 
     UserVO findUserById(String username);
