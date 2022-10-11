@@ -35,4 +35,8 @@
                         'USER'
                        )
     </insert>
+
+    <select id="findUserById" resultType="com.todo.cn.domain.UserVO">
+        select * from USERS where username = #{username}
+    </select>
 </mapper>
