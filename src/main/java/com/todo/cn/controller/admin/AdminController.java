@@ -38,8 +38,8 @@ public class AdminController {
 
 
     @GetMapping("/signup")
-    public String signup(){
-
+    public String signup(Model model){
+        model.addAttribute("pur", new PostUserReq());
         return "signup";
     }
 

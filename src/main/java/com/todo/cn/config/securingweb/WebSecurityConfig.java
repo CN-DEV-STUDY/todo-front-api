@@ -20,7 +20,7 @@ public class WebSecurityConfig {
         http
                 .csrf().disable()
                 .authorizeRequests((requests) -> requests
-                        .antMatchers("/", "/home").permitAll()
+                        .antMatchers("/", "/home", "/admin/signup").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
