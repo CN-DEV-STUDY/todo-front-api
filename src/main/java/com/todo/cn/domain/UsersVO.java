@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 
 @Data
-public class UserVO {
+public class UsersVO {
     private int uno;
     private String username;
     private String password;
@@ -18,14 +18,14 @@ public class UserVO {
     private LocalDate birthDate;
 
     @Builder
-    public UserVO(int uno,
-                  String username,
-                  String password,
-                  String name,
-                  String email,
-                  String phone,
-                  String gender,
-                  LocalDate birthDate) {
+    public UsersVO(int uno,
+                   String username,
+                   String password,
+                   String name,
+                   String email,
+                   String phone,
+                   String gender,
+                   LocalDate birthDate) {
         this.uno = uno;
         this.username = username;
         this.password = password;

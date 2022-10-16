@@ -1,40 +1,41 @@
 package com.todo.cn.controller.admin;
 
 import com.todo.cn.controller.dto.PostUserReq;
-import com.todo.cn.domain.UserVO;
+import com.todo.cn.domain.UsersVO;
 import com.todo.cn.service.AdminService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.view.RedirectView;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/admin")
-@SessionAttributes({"loginUser", "next"})
 @RequiredArgsConstructor
 @Log4j2
 public class AdminController {
 
-    private AdminService service;
-
-    public AdminController(AdminService service) {
-        this.service = service;
-    }
+    private final AdminService service;
+//    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping("/login")
-    public String login(@RequestHeader(name="Referer", required = false) String referer,
-                        @SessionAttribute(required = false) String next,
-                        Model model){
-        log.info("referer = {}", referer);
-
-        if(next == null) {
-            model.addAttribute("next", referer);
-        }
-
+    public String login(){
         return "login";
     }
+
+//    @PostMapping("/login")
+//    public String login(String username, String password) {
+//
+//        UsersVO usersVO = service.findUserById(username);
+//
+//        if(usersVO != null && bCryptPasswordEncoder.matches(password, usersVO.getPassword())) {
+//            System.out.println("비밀번호 일칭");
+//        }
+//
+//        return "redirect:/";
+//    }
 
 
     @GetMapping("/signup")

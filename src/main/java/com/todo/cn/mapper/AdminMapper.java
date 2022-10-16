@@ -1,16 +1,14 @@
 package com.todo.cn.mapper;
 
 import com.todo.cn.controller.dto.PostUserReq;
-import com.todo.cn.domain.UserVO;
+import com.todo.cn.domain.UsersVO;
 import org.apache.ibatis.annotations.Mapper;
-
-import java.util.List;
 
 @Mapper
 public interface AdminMapper {
 
-    public int signupUser(UserVO userVO);
+    public int signupUser(UsersVO userVO);
     public int insertAuthorities(PostUserReq pur);
 
-    UserVO findUserById(String username);
+    UsersVO findUserById(String username);
 }

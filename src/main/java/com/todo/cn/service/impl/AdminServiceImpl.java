@@ -1,7 +1,7 @@
 package com.todo.cn.service.impl;
 
 import com.todo.cn.controller.dto.PostUserReq;
-import com.todo.cn.domain.UserVO;
+import com.todo.cn.domain.UsersVO;
 import com.todo.cn.mapper.AdminMapper;
 import com.todo.cn.service.AdminService;
 import lombok.RequiredArgsConstructor;
@@ -42,7 +42,7 @@ public class AdminServiceImpl implements AdminService {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate birthDate = LocalDate.parse(birth, formatter);
 
-        UserVO userVO = UserVO.builder()
+        UsersVO userVO = UsersVO.builder()
                 .username(pur.getUsername())
                 .password(pur.getPassword())
                 .name(pur.getName())
@@ -67,7 +67,7 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public UserVO findUserById(String username) {
+    public UsersVO findUserById(String username) {
         return mapper.findUserById(username);
     }
 }
