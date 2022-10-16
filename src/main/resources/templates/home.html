@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head th:replace="commonLayout :: common_header(~{::title}, ~{::style})">
     <title>Home</title>
 
     <style>
-        #headerBtn {
+        .headerBtn {
             position: absolute;
             right: 20px;
             top: 20px;
@@ -15,9 +16,13 @@
 </head>
 <body>
   <h1>홈페이지 입니다</h1>
-  <span id="headerBtn">
+  <span sec:authorize="isAuthenticated()" class="headerBtn">
+        안녕하세요. <span sec:authentication="name"></span>님
+        <a th:href="@{/admin/signout}" class="btn btn-primary">로그아웃</a>
+  </span>
+  <span sec:authorize="isAnonymous()" class="headerBtn">
         <button class="btn btn-primary" th:onclick="|location.href='@{/admin/login}'|">로그인</button>
-        <button class="btn btn-primary" th:onclick="|location.href='@{/signup}'|">회원가입</button>
-    </span>
+        <button class="btn btn-primary" th:onclick="|location.href='@{/admin/signup}'|">회원가입</button>
+  </span>
 </body>
 </html>
