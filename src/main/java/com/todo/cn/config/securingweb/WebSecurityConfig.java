@@ -18,7 +18,7 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .cors().disable()
+                .csrf().disable()
                 .authorizeRequests((requests) -> requests
                         .antMatchers("/", "/home").permitAll()
                         .anyRequest().authenticated()
@@ -27,7 +27,10 @@ public class WebSecurityConfig {
                         .loginPage("/admin/login")
                         .permitAll()
                 )
-                .logout((logout) -> logout.permitAll());
+                .logout((logout) -> logout
+                        .logoutUrl("/admin/signout")
+                        .logoutSuccessUrl("/")
+                        .permitAll());
         return http.build();
     }
 
