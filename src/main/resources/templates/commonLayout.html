@@ -1,4 +1,5 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head th:fragment="common_header(title,style)">
   <meta charset="UTF-8">
   <title th:replace="${title}">레이아웃 타이틀</title>
@@ -14,3 +15,17 @@
 <!--  <th:block th:replace="${links}" />-->
   <th:block th:replace="${style}"/>
 </head>
+<body>
+    <div th:fragment="common_button">
+      <span sec:authorize="isAuthenticated()" class="headerBtn">
+        안녕하세요. <span sec:authentication="name"></span>님
+        <form th:action="@{/admin/signout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+  </span>
+      <span sec:authorize="isAnonymous()" class="headerBtn">
+              <button class="btn btn-primary" th:onclick="|location.href='@{/admin/login}'|">로그인</button>
+              <button class="btn btn-primary" th:onclick="|location.href='@{/admin/signup}'|">회원가입</button>
+      </span>
+    </div>
+</body>
