@@ -21,8 +21,13 @@
     <!--/*-->
         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">로그인</button>
     <!--*/-->
+
+    <!--/*-->
         <button class="btn btn-primary" th:onclick="|location.href='@{/admin/login}'|">로그인</button>
         <button class="btn btn-primary" th:onclick="|location.href='@{/admin/signup}'|">회원가입</button>
+    <!--*/-->
+
+        <th:block th:replace="~{commonLayout :: common_button}"></th:block>
     </span>
 
 <h1>TodoList</h1>
@@ -49,7 +54,7 @@
 
     <div>
           <th:block th:if="${list.size()} == 0" th:text="'할일 목록이 없습니다. 할일을 추가해주세요! 😃'"></th:block>
-          <button id="add" class="btn btn-outline-secondary">추가</button>
+            <button th:if="${list.size()} == 0" id="add" class="btn btn-outline-secondary">추가</button>
     </div>
     <div class="accordion mt-3" id="accordionExample">
         <div class="accordion-item" th:each="list : ${list}">
