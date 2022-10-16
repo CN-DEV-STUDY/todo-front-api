@@ -1,16 +1,12 @@
 package com.todo.cn.service.impl;
 
-import com.todo.cn.controller.dto.PostTodoReq;
 import com.todo.cn.controller.dto.PostUserReq;
 import com.todo.cn.domain.UserVO;
 import com.todo.cn.mapper.AdminMapper;
 import com.todo.cn.service.AdminService;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
