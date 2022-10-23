@@ -6,21 +6,30 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
 public class PostUserReq {
 
+    @NotBlank
     private String username;
+
+    @NotBlank
     private String password;
 
+    @NotBlank
     private String name;
 
+    @NotNull
     private String[] email;
 
     private String[] phone;
 
+    @NotNull
     private String gender;
 
     private String[] birthDate;
