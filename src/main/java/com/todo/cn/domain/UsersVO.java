@@ -1,13 +1,21 @@
 package com.todo.cn.domain;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.Collection;
 
 
-@Data
-public class UsersVO {
+@Getter
+@Setter
+@NoArgsConstructor
+@Builder
+@AllArgsConstructor
+public class UsersVO implements UserDetails {
     private int uno;
     private String username;
     private String password;
@@ -17,22 +25,29 @@ public class UsersVO {
     private String gender;
     private LocalDate birthDate;
 
-    @Builder
-    public UsersVO(int uno,
-                   String username,
-                   String password,
-                   String name,
-                   String email,
-                   String phone,
-                   String gender,
-                   LocalDate birthDate) {
-        this.uno = uno;
-        this.username = username;
-        this.password = password;
-        this.name = name;
-        this.email = email;
-        this.phone = phone;
-        this.gender = gender;
-        this.birthDate = birthDate;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }

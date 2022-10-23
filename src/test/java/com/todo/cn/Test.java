@@ -10,9 +10,9 @@ public class Test {
     @Autowired
     private TestMapper testMapper;
 
-    @org.junit.jupiter.api.Test
-    public void testSelect() {
-        String id = testMapper.testSelect();
-        System.out.println(id);
-    }
+//    @org.junit.jupiter.api.Test
+//    public void testSelect() {
+//        String id = testMapper.testSelect();
+//        System.out.println(id);
+//    }
 }
