@@ -39,4 +39,10 @@
     <select id="findUserById" resultType="com.todo.cn.domain.UsersVO">
         select * from users where username = #{username}
     </select>
+
+    <select id="checkId" resultType="int">
+        select count(*)
+        from users
+        where username=#{username}
+    </select>
 </mapper>

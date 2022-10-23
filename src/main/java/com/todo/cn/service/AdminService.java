@@ -8,4 +8,6 @@ public interface AdminService {
     public void signup(PostUserReq postUserReq);
 
     UsersVO findUserById(String username);
+
+    public int checkId(String username);
 }

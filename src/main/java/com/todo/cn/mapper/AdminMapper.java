@@ -11,4 +11,6 @@ public interface AdminMapper {
     public int insertAuthorities(PostUserReq pur);
 
     UsersVO findUserById(String username);
+
+    public int checkId(String username);
 }

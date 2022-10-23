@@ -70,4 +70,9 @@ public class AdminServiceImpl implements AdminService {
     public UsersVO findUserById(String username) {
         return mapper.findUserById(username);
     }
+
+    @Override
+    public int checkId(String username) {
+        return mapper.checkId(username);
+    }
 }

@@ -1,18 +1,13 @@
 package com.todo.cn.controller.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
 
-@Data
-@NoArgsConstructor
+@Getter
+@Setter
 public class PostUserReq {
 
     @NotBlank
@@ -33,23 +28,4 @@ public class PostUserReq {
     private String gender;
 
     private String[] birthDate;
-
-
-    @Builder
-    public PostUserReq(String username ,
-                       String password,
-                       String name,
-                       String[] email,
-                       String[] phone,
-                       String gender,
-                       String[] birthDate) {
-        this.username = username;
-        this.password = password;
-        this.name=name;
-        this.email = email;
-        this.phone = phone;
-        this.gender = gender;
-        this.birthDate = birthDate;
-
-    }
 }
