@@ -162,7 +162,7 @@
     window.onload = () => {
 
         // 휴지통 리스트 뿌리기
-        fetch("/todo/bin/1")
+        fetch("/todo/bin")
             .then((response)=>response.json())
             .then((data)=>{
                 let trTag = "";

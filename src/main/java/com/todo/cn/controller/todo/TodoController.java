@@ -3,10 +3,12 @@ package com.todo.cn.controller.todo;
 import com.todo.cn.controller.dto.GetTodoRes;
 import com.todo.cn.controller.dto.PostTodoReq;
 import com.todo.cn.domain.TodoVO;
+import com.todo.cn.domain.UsersVO;
 import com.todo.cn.service.TodoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -21,30 +23,27 @@ import java.util.List;
 public class TodoController {
 
     private final TodoService service;
-
-
-    @GetMapping("/list/{uno}")
-    public String list(@PathVariable int uno , Model model){
-        List<GetTodoRes> list = service.getList(uno);
-        model.addAttribute("uno", uno);
+    
+    @GetMapping("/list")
+    public String list(Model model, @AuthenticationPrincipal UsersVO usersVO){
+        List<GetTodoRes> list = service.getList(usersVO.getUno());
+        model.addAttribute("uno", usersVO.getUno());
         model.addAttribute("list" , list);
 
         return "list";
     }
 
-    @GetMapping("/bin/{uno}")
+    @GetMapping("/bin")
     @ResponseBody
-    public ResponseEntity<List<GetTodoRes>> bin(@PathVariable int uno , Model model){
-        List<GetTodoRes> binList = service.getBinList(uno);
+    public ResponseEntity<List<GetTodoRes>> bin(@AuthenticationPrincipal UsersVO usersVO, Model model){
+        List<GetTodoRes> binList = service.getBinList(usersVO.getUno());
         return new ResponseEntity<>(binList ,HttpStatus.OK);
     }
 
     @PostMapping("/register")
     public String register(PostTodoReq ptr , RedirectAttributes redirectAttributes){
         service.register(ptr);
-        redirectAttributes.addAttribute("uno", ptr.getUno());
-        redirectAttributes.addAttribute("status", true);
-        return "redirect:/todo/list/{uno}";
+        return "redirect:/todo/list";
     }
 
     @PostMapping("/modify/{tno}")
@@ -59,8 +58,7 @@ public class TodoController {
     public String delete(@PathVariable int tno , RedirectAttributes redirectAttributes){
         TodoVO todoVO = service.selectTodo(tno);
         service.removeAndInsertBin(todoVO);
-        redirectAttributes.addAttribute("uno", todoVO.getUno());
-        return "redirect:/todo/list/{uno}";
+        return "redirect:/todo/list";
 
     }
 
@@ -69,8 +67,7 @@ public class TodoController {
     public String restoreTodo(@PathVariable int tno , RedirectAttributes redirectAttributes){
         service.restoreTodo(tno);
         TodoVO todoVO = service.selectTodo(tno);
-        redirectAttributes.addAttribute("uno", todoVO.getUno());
-        return "redirect:/todo/list/{uno}";
+        return "redirect:/todo/list";
     }
     
     // 휴지통에서 영구삭제
@@ -78,8 +75,7 @@ public class TodoController {
     public String removeBinPer(@PathVariable int tno , RedirectAttributes redirectAttributes){
         service.removeTodoPer(tno);
         TodoVO todoVO = service.selectTodo(tno);
-        redirectAttributes.addAttribute("uno", todoVO.getUno());
-        return "redirect:/todo/list/{uno}";
+        return "redirect:/todo/list";
     }
 
 /**
