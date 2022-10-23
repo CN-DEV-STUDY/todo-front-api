@@ -24,8 +24,8 @@
         </form>
   </span>
       <span sec:authorize="isAnonymous()" class="headerBtn">
-              <button class="btn btn-primary" th:onclick="|location.href='@{/admin/login}'|">로그인</button>
-              <button class="btn btn-primary" th:onclick="|location.href='@{/admin/signup}'|">회원가입</button>
+              <button class="btn btn-primary" th:onclick="|location.href='@{/admin/login}'|" th:text="#{button.login}">로그인</button>
+              <button class="btn btn-primary" th:onclick="|location.href='@{/admin/signup}'|" th:text="#{button.signup}">회원가입</button>
       </span>
     </div>
 </body>
