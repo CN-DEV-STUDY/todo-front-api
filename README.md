@@ -19,9 +19,10 @@ spring boot ec2 배포 : https://bcp0109.tistory.com/356
 - /dev/null : 로그   
    
 프로세스 종료   
-- ps -ef | grep {keyword}로 PID 찾은 후 -> kill PID
-
-
+- ps -ef | grep {keyword}로 PID 찾은 후 -> kill PID   
+   
+PROBLEMS & SOLVED
+---
 [problem - 1]   
 jar 파일을 ec2에 올리고 실행 시킨 뒤 터미널을 종료시키면 서버도 같이 종료되는 문제가 있었다.   
 [solved - 1]   
